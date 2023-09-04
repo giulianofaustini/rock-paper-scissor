@@ -9,13 +9,13 @@ const App = () => {
   const [result, setResult] = useState(null);
 
   const handleChoice = (choice) => {
-    const compTurn = Choices[Math.floor(Math.random() * Choices.length) ]
-    setCompTurn(compTurn)
-    console.log('comp choice is', compTurn)
-    setYourTurn(choice)
-    console.log(' you chose', choice)
-    if(compTurn === yourTurn) {
-      setResult('tie!')
+    const compTurn = Choices[Math.floor(Math.random() * Choices.length)];
+    setCompTurn(compTurn);
+    console.log("comp choice is", compTurn);
+    setYourTurn(choice);
+    console.log(" you chose", choice);
+    if (choice.name === compTurn.name) {
+      setResult("This is a tie!");
     } else if (
       (choice.name === "rock" && compTurn.name === "scissors") ||
       (choice.name === "paper" && compTurn.name === "rock") ||
@@ -25,22 +25,46 @@ const App = () => {
     } else {
       setResult("You lose!");
     }
-  }
+  };
 
-  
+  const handlePlayAgain = () => {
+    setYourTurn(null);
+    setCompTurn(null);
+    setResult(null);
+  };
 
   return (
     <>
       <div className="App">
         <header className="App-header">
           <h1>Rock. Paper. Scissors.</h1>
+          <h2>Pick and play</h2>
           <div>
             <ul>
               {Choices.map((choice) => (
-                <button onClick={ () => handleChoice(choice)} className="choice" key={choice.name}> {choice.emoji}</button>
+                <button
+                  onClick={() => handleChoice(choice)}
+                  className="choice"
+                  key={choice.name}
+                >
+                  {" "}
+                  {choice.emoji}
+                </button>
               ))}
             </ul>
           </div>
+          {compTurn && yourTurn && (
+            <div>
+              <span className="game">
+                {" "}
+                {yourTurn.emoji} <span className="vs">VS</span> {compTurn.emoji}
+              </span>
+              <div>
+                <span className="results"> {result} </span>
+              </div>
+              <button  className="playAgain" onClick={handlePlayAgain}>👉🏻 play again</button>
+            </div>
+          )}
         </header>
       </div>
     </>
@@ -49,3 +73,9 @@ const App = () => {
 
 export default App;
 
+
+// .App {
+  // text-align: center;
+ // width: 100% ;
+ 
+// }
