@@ -14,6 +14,9 @@ const App = () => {
     console.log("comp choice is", compTurn);
     setYourTurn(choice);
     console.log(" you chose", choice);
+
+
+
     if (choice.name === compTurn.name) {
       setResult("This is a tie!");
     } else if (
