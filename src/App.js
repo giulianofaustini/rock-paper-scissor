@@ -15,8 +15,6 @@ const App = () => {
     setYourTurn(choice);
     console.log(" you chose", choice);
 
-
-
     if (choice.name === compTurn.name) {
       setResult("This is a tie!");
     } else if (
@@ -36,6 +34,17 @@ const App = () => {
     setResult(null);
   };
 
+  const choiceButtons = Choices.map((choice) => (
+    <button
+      onClick={() => handleChoice(choice)}
+      className="choice"
+      key={choice.name}
+    >
+      {" "}
+      {choice.emoji}
+    </button>
+  ));
+
   return (
     <>
       <div className="App">
@@ -43,18 +52,7 @@ const App = () => {
           <h1>Rock. Paper. Scissors.</h1>
           <h2>Pick and play</h2>
           <div>
-            <ul>
-              {Choices.map((choice) => (
-                <button
-                  onClick={() => handleChoice(choice)}
-                  className="choice"
-                  key={choice.name}
-                >
-                  {" "}
-                  {choice.emoji}
-                </button>
-              ))}
-            </ul>
+            <ul>{choiceButtons}</ul>
           </div>
           {compTurn && yourTurn && (
             <div>
@@ -65,7 +63,9 @@ const App = () => {
               <div>
                 <span className="results"> {result} </span>
               </div>
-              <button  className="playAgain" onClick={handlePlayAgain}>👉🏻 play again</button>
+              <button className="playAgain" onClick={handlePlayAgain}>
+                👉🏻 play again
+              </button>
             </div>
           )}
         </header>
@@ -75,10 +75,3 @@ const App = () => {
 };
 
 export default App;
-
-
-// .App {
-  // text-align: center;
- // width: 100% ;
- 
-// }
