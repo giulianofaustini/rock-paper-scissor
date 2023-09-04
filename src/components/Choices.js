@@ -3,7 +3,7 @@
 import React from 'react';
 
 
-const Choices = () => [
+const Choices =  [
 
 { name: "rock" , emoji: " 🪨 " },
 { name: "paper" , emoji: " 🧻 " },
