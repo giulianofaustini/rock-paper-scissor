@@ -11,7 +11,9 @@ const App = () => {
   const handleChoice = (choice) => {
     const compTurn = Choices[Math.floor(Math.random() * Choices.length) ]
     setCompTurn(compTurn)
+    console.log('comp choice is', compTurn)
     setYourTurn(choice)
+    console.log(' you chose', choice)
     if(compTurn === yourTurn) {
       setResult('tie!')
     } else if (
@@ -26,7 +28,6 @@ const App = () => {
   }
 
   
-  console.log(compTurn)
 
   return (
     <>
